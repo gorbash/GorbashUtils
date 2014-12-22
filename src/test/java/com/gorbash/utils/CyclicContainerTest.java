@@ -8,7 +8,6 @@ import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.fail;
 
 /**
  * Created by Gorbash on 2014-12-22.
@@ -68,16 +67,11 @@ public class CyclicContainerTest {
         }
     }
 
-    @Test
+    @Test(expected = EmptyContainerException.class)
     public void testEmptyCyclicContainer() {
         CyclicContainer<Object> cont = new CyclicContainer<Object>(new ArrayList<Object>());
         assertThat(cont.isEmpty(), is(true));
         assertThat(cont.size(), is(0));
-        try {
-            cont.getNext();
-            fail("Empty container should throw exception.");
-        } catch (EmptyContainerException e) {
-            //it's fine - exception is expected here
-        }
+        cont.getNext();
     }
 }
