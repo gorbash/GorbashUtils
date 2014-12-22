@@ -15,12 +15,8 @@ public class CyclicContainer<E> {
     private List<E> list;
     private int index;
 
-    public CyclicContainer() {
-        list = new ArrayList<E>();
-    }
-
     public CyclicContainer(Collection<E> inputCollection) {
-        this();
+        list = new ArrayList<E>();
         list.addAll(inputCollection);
     }
 

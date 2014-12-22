@@ -70,7 +70,7 @@ public class CyclicContainerTest {
 
     @Test
     public void testEmptyCyclicContainer() {
-        CyclicContainer cont = new CyclicContainer();
+        CyclicContainer<Object> cont = new CyclicContainer<Object>(new ArrayList<Object>());
         assertThat(cont.isEmpty(), is(true));
         assertThat(cont.size(), is(0));
         try {
